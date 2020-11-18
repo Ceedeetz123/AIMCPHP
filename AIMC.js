@@ -103,6 +103,7 @@ $(function(){
 					console.log(counts)
 					$('#search').show(); //reveals search
 					$('#showForm').show(); //allows user to add a new row
+					$( "table").show();
 					
 					
 				
@@ -155,6 +156,7 @@ $(function(){
 					console.log(counts)
 					$('#search').show(); //search and the input forms are displayed
 					$('#showForm').show();
+					$( "table").show();
 			
 				
 				}
