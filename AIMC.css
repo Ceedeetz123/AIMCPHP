@@ -1,5 +1,5 @@
 body{
-	background: #f7e300;
+    background: linear-gradient(to right, #c2e59c, #64b3f4);
 	font-family:arial;
 }
 h1{
@@ -18,14 +18,14 @@ width: 50%;
 }
 
 #data{
-border: solid bisque;
-background: cornsilk;
+display:Table;
+margin:0 auto;
 }
 
 #newInputs input{
 margin: 10px;	
 }
 
-#newRowForm{
-background: cornsilk;
+#data select{
+	width:100%;
 }
