@@ -1,31 +1,60 @@
-body{
-    background: linear-gradient(to right, #c2e59c, #64b3f4);
+body, html {
+	background: linear-gradient(#087ee0, #afd1ec);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 	font-family:arial;
+
 }
 h1{
 	text-align: center;
 }
+select,input,button{
+    padding: 9px;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
 
 #set{
 	padding-top: 30px;
 }
 
 table#tablesTests{
-text-align: center;
-margin: auto;
-padding: 20px;
-width: 50%;
+    margin: auto;
+    padding: 20px;
+    width: 50%;
+    background: #92ceff;
+    margin-top: 50px;
+}
+th{
+	border-bottom: 2px solid darkgray;
+    text-align: left;
+    padding: 10px;
+}
+td,td{
+	padding:10px;
 }
 
 #data{
-display:Table;
-margin:0 auto;
+	display:Table;
+	margin:0 auto;
+	background: #70bfff;
+	padding: 50px;
+	border-radius: 5px;
 }
 
 #newInputs input{
-margin: 10px;	
+	margin: 10px;	
 }
 
 #data select{
 	width:100%;
+	
+}
+
+
+footer{
+	position:fixed;
+	bottom:0;
 }

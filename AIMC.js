@@ -7,9 +7,10 @@ $(function(){
 	var getDataSet;
 
 	//hides majority of items
-	$( "#set" ).hide();
+/* 	$( "#set" ).hide();
 	$( "#search" ).hide();
 	$( "#showForm").hide();
+	$( "table").hide(); */
 	
 	
 	
@@ -260,7 +261,7 @@ $(function(){
 		}
 			
 	};
-}());
+}()); 	
 	//Searching table
 	$('#textsInputs').keyup(function(){
 	  // Declare variables
