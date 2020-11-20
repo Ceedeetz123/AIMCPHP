@@ -64,7 +64,7 @@ $(function(){
 	 $('#showForm').hide();
 	 $('#newRowForm').hide();
 	 $('#newInputs').empty();
-	
+/* 	
 		 if ($("#dataSource option:selected").val()=='database'){//database datasets
 		  $.getJSON("database1.php", {tableName:getDataSet}, function(data){
 		   if (data["code"] == "error"){
@@ -112,7 +112,8 @@ $(function(){
 		  }; //end getJSON
 
 	});
-	} else if ($("#dataSource option:selected").val()=='xml'){//xml datasets
+	}  */
+	if ($("#dataSource option:selected").val()=='xml'){//xml datasets
 		//for resetting and hiding when another data set is chosen
 		$("#columnSet").empty();
 		$('table').empty(); 

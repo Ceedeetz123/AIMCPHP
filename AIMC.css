@@ -19,7 +19,11 @@ select,input,button{
 #set{
 	padding-top: 30px;
 }
-
+#search{
+	display: table;
+    margin: 0 auto;
+    margin-bottom: -40px;
+}
 table#tablesTests{
     margin: auto;
     padding: 20px;
@@ -42,6 +46,7 @@ td,td{
 	background: #70bfff;
 	padding: 50px;
 	border-radius: 5px;
+	margin-bottom: 20px;
 }
 
 #newInputs input{
@@ -52,9 +57,7 @@ td,td{
 	width:100%;
 	
 }
-
-
 footer{
-	position:fixed;
+
 	bottom:0;
 }

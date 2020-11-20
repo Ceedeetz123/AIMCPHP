@@ -12,7 +12,6 @@
         <label for="dataSource">Data Source: </label>
 		<select id="dataSource" name="dataSource">
 		  <option value="choose">Please choose an Data Source</option>
-		  <option value="database">Database</option>
 		  <option value="xml">XML</option>
 		</select><br>
 		<div id="set">
@@ -27,25 +26,23 @@
 		<input id="textsInputs" placeholder="Search..">
 		<div id="output"></div>
 	</div>
+	
 	<table id="tablesTests">
 			<tr id="columns">
 			</tr>
 	</table>
-
-	<br>	
+	
 	<div id="newRowButton">
 		<button href="#" id="showForm">New Row</button>
+		<form id="newRowForm">
+			<p>Type in the input boxes to create a new row </p>
+			<div id ="newInputs"></div> <br>
+			<input type="submit" id="addButton" value="Add a New Row">
+		</form>
 	</div>
-	<form id="newRowForm">
-		<p>Type in the input boxes to create a new row </p>
-		<div id ="newInputs"></div> <br>
-		<input type="submit" id="addButton" value="Add a New Row">
-	</form>
 
+	<br>	
 
-<footer>
-	<p>Chi Hoo Tsang</p>
-</footer>
 <!--jquery cdn with a local backup-->
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
