@@ -7,31 +7,28 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
-	<h1>AIMC</h1>
+	<h1>XML Read and Overwrite Data</h1>
 	<form action="FormEcho.php" method="post" id="data" >
+	<div id="source">
         <label for="dataSource">Data Source: </label>
 		<select id="dataSource" name="dataSource">
 		  <option value="choose">Please choose an Data Source</option>
 		  <option value="xml">XML</option>
 		</select><br>
-		<div id="set">
-			<label for="dataSet">Data Set: </label>
-			<select id="dataSet" name="dataSet" value="dataSet">
-				<option>Please choose an Data Source first please</option>
-			</select>
-		</div>
+	</div>
+	<div id="set">
+		<label for="dataSet">Data Set: </label>
+		<select id="dataSet" name="dataSet" value="dataSet">
+			<option>Please choose an Data Source first please</option>
+		</select>
+	</div>
 	</form>
 	<div id="search">
 		<select id="columnSet" name="columnSet" value="columnSet"></select>
 		<input id="textsInputs" placeholder="Search..">
 		<div id="output"></div>
 	</div>
-	
-	<table id="tablesTests">
-			<tr id="columns">
-			</tr>
-	</table>
-	
+		
 	<div id="newRowButton">
 		<button href="#" id="showForm">New Row</button>
 		<form id="newRowForm">
@@ -40,6 +37,11 @@
 			<input type="submit" id="addButton" value="Add a New Row">
 		</form>
 	</div>
+	
+	<table id="tablesTests">
+			<tr id="columns">
+			</tr>
+	</table>
 
 	<br>	
 

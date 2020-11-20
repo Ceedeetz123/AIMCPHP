@@ -1,8 +1,6 @@
 $(function(){
 	var $source = $('#dataSource');
 	var $set = $('#dataSet');
-	var xml = {};
-	var database = {};
 	var titles;
 	var getDataSet;
 
@@ -228,6 +226,10 @@ $(function(){
   });
 
 	function getSets(dataSources){ //is called when the user chooses a data source
+	$.ajaxSetup({ //sets getJSON function to be sync
+		async: false
+	});
+		var database = {};
 		if (dataSources === 'database'){ //if user chooses a database datasource
 	
 		$.getJSON("database.php", function(data){ //calls a php file to get the data set values
@@ -247,20 +249,22 @@ $(function(){
 		return database;
 		
 		} else if (dataSources === 'xml'){ //if user chooses a database datasource
+		var xml = {};
+		var xmls;
 		
-		 $(function() {
 		$.getJSON("xml.php", function(data){ //calls a php file to get the data set values
 			if (data["code"] == "error"){
 
 			  console.log(data["message"]); //when a error is detected the message will be displayed in the console
 			}
 			else{
-			
+		      console.log(data)
 			  xml = Object.assign({},(data)); //stores all data set values 
+		
 			}
 		  });
-		}); 
-		 return xml; //return back
+	    console.log(xml)
+		return xml
 		}
 			
 	};
