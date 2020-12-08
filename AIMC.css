@@ -19,11 +19,6 @@ select,input,button{
 	margin-left:20px;
 }
 
-#search{
-	display: table;
-    margin: 0 auto;
-    margin-bottom: -40px;
-}
 table#tablesTests{
     margin: auto;
     padding: 20px;
@@ -59,19 +54,18 @@ td,td{
 	
 }
 #newRowForm{
-	padding:20px;
-	background:#92ceff;
-	margin-top: 45px;
+	display:block !important;
 }
 
 #newRowButton{
 	float: right;
 }
-button#showForm{
+#search{
 	float:right;
 }
-input#addButton{
-	margin-left: 190px;
+
+button#showForm{
+	float:right;
 }
 footer{
 

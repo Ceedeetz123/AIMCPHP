@@ -8,13 +8,17 @@ $(function(){
 	$( "#set" ).hide();
 	$( "#search" ).hide();
 	$( "#showForm").hide();
-	$( "table").hide();
+	$('table#tablesTests th').remove();  //empty table header
+	$('table#tablesTests td').remove();  //empty table data 	
+	$('table#tablesTests').hide();
 	
 	
 	
      $source.on('change',function calling(){//Event listner when choosing a data source
 	 	$("#columnSet").empty(); //resets input column select options 
-		$('table').empty(); //resets table 
+		$('table#tablesTests th').remove();  //empty table header
+		$('table#tablesTests td').remove();  //empty table data 	
+		$('table#tablesTests').hide();
 		$('#search').hide(); //hides search
 		$('#showForm').hide(); //hides the ability to add new rows
 		$('#newRowForm').hide(); //hides the input for creating a new row
@@ -52,98 +56,44 @@ $(function(){
 	});
 		
 	//displaying table contents of a data set
-	$("#dataSet").on('change', function(){
-	
+	$("#dataSet").on('change', function (){
+
 	 getDataSet = ($("#dataSet option:selected").html())
 	 //for resetting and hiding when another data set is chosen
 	 $("#columnSet").empty();
-	 $('table').empty(); 
+	 $('table#tablesTests th').remove();  //empty table header
+	 $('table#tablesTests td').remove();  //empty table data 	
+     $('table#tablesTests').hide();
 	 $('#search').hide(); 
 	 $('#showForm').hide();
 	 $('#newRowForm').hide();
 	 $('#newInputs').empty();
-/* 	
+	
 		 if ($("#dataSource option:selected").val()=='database'){//database datasets
 		  $.getJSON("database1.php", {tableName:getDataSet}, function(data){
 		   if (data["code"] == "error"){
 			console.log(data["message"]);
 			}
 			else{
-			 $.each(data, function(index, element) {
-			 var i;
-			 var s;
-			 titles =  Object.keys(element[0])//variable to store titles
-		
-			 for (s = 0; s < titles.length; s++) { //fills the table with columns and also fills the column select options
-				$("#columnSet").append('<option value="' + s + '">' + titles[s] + '</option>'); //column select options
-				$("table:first").append('<th>'+ titles[s] + '</th>'); //sets the column of the first row of the table
-			 }
-			 
-			 console.log(titles.length)
-			 
-			 for (i = 0; i < element.length; i++){ 
-				var strings = JSON.stringify(Object.values(element[i])).replace(/[^a-zA-Z0-9 ]/g, " "); //array to string with stringify and also removing extra symbols.
-				var counts = 0;
-				var tablebody;
-				var d;
-				
-					tablebody += '<tr>'
-					for (d = 0; d < Object.values(element[i]).length ; d++){ //displays all data in a table
-						tablebody +='<td>' + JSON.stringify(Object.values(element[i])[counts]) + '</td>' ; 
-						counts++;
-					};
-					tablebody+= '</tr>'
-					
-					$( "#tablesTests" ).append(tablebody);
-					
-					tablebody = null //makes sure that the variable is reset everytime a row is created 
-					
-					console.log(counts)
-					$('#search').show(); //reveals search
-					$('#showForm').show(); //allows user to add a new row
-					$( "table").show();
-					
-					
-				
-			 }
-			}); //end else
-		  }; //end getJSON
-
-	});
-	}  */
-	if ($("#dataSource option:selected").val()=='xml'){//xml datasets
-		//for resetting and hiding when another data set is chosen
-		$("#columnSet").empty();
-		$('table').empty(); 
-		 $('#search').hide(); 
-		 $('#showForm').hide();
-		 $('#newRowForm').hide();
-		 $('#newInputs').empty();
-		 
-		$.getJSON("xml1.php", {sourceName:getDataSet}, function(data){
-		if (data["code"] == "error"){
-			console.log(data["message"]);
-		}
-		else{
 			$.each(data, function(index, element) {
 			var i;
 			var s;
 			titles =  Object.keys(element[0])//variable to store titles
-		
+			
 			 for (s = 0; s < titles.length; s++) { //fills the column data selection and tabl
 				$("#columnSet").append('<option value="' + s + '">' + titles[s] + '</option>'); //adds a new select option 
-				$("table:first").append('<th>'+ titles[s] + '</th>'); //sets the column of the first row of the table
+				$("tr#headerRow").append('<th id="columnName'+ s +'">'+ titles[s] + '</th>'); //sets the column of the first row of the table
 			 }
-			
+
 			   	for (i = 0; i < element.length; i++){ 
-					var strings = JSON.stringify(Object.values(element[i])).replace(/[^a-zA-Z0-9 ]/g, " "); //array to string with stringify and also removing extra symbols.
+				
 					var counts = 0;
 					var tablebody;
 					var d;
 			
 					tablebody += '<tr>'
-					for (d = 0; d < Object.values(element[i]).length  ; d++){ //displays all data in a table
-						tablebody +='<td>' + JSON.stringify(Object.values(element[i])[counts]) + '</td>' ;
+					for (d = 0; d < Object.values(element[i]).length; d++){ //displays all data in a table
+						tablebody +='<td>' + JSON.stringify(Object.values(element[i])[counts]).replace(/[^a-zA-Z0-9 ]/g, " ") + '</td>' ; //get object value and convert it in string form while removing any symbols
 						counts++;
 					};
 					
@@ -155,7 +105,61 @@ $(function(){
 					console.log(counts)
 					$('#search').show(); //search and the input forms are displayed
 					$('#showForm').show();
-					$( "table").show();
+					$( "table#tablesTests").show();
+			
+				
+				}
+			}); //end else
+		  }; //end getJSON
+
+	});
+	} else if ($("#dataSource option:selected").val()=='xml'){//xml datasets
+		//for resetting and hiding when another data set is chosen
+		$("#columnSet").empty();
+		$('table#tablesTests th').remove();  //empty table header
+		$('table#tablesTests td').remove();  //empty table data 	
+		$('table#tablesTests').hide();
+		$('#search').hide(); 
+		$('#showForm').hide();
+		$('#newRowForm').hide();
+		$('#newInputs').empty();
+		 
+		$.getJSON("xml1.php", {sourceName:getDataSet}, function(data){
+		if (data["code"] == "error"){
+			console.log(data["message"]);
+		}
+		else{
+			$.each(data, function(index, element) {
+			var i;
+			var s;
+			titles =  Object.keys(element[0])//variable to store titles
+			
+			 for (s = 0; s < titles.length; s++) { //fills the column data selection and tabl
+				$("#columnSet").append('<option value="' + s + '">' + titles[s] + '</option>'); //adds a new select option 
+				$("tr#colHeaders").append('<th id="columnName'+ s +'">'+ titles[s] + '</th>'); //sets the column of the first row of the table
+			 }
+
+			   	for (i = 0; i < element.length; i++){ 
+				
+					var counts = 0;
+					var tablebody;
+					var d;
+			
+					tablebody += '<tr>'
+					for (d = 0; d < Object.values(element[i]).length; d++){ //displays all data in a table
+						tablebody +='<td>' + JSON.stringify(Object.values(element[i])[counts]).replace(/[^a-zA-Z0-9 ]/g, " ") + '</td>' ; //get object value and convert it in string form while removing any symbols
+						counts++;
+					};
+					
+					tablebody+= '</tr>'
+					
+					$("#tablesTests").append(tablebody)
+				
+					tablebody = null //makes sure that the variable is reset everytime a row is created 
+					console.log(counts)
+					$('#search').show(); //search and the input forms are displayed
+					$('#showForm').show();
+					$( "table#tablesTests").show();
 			
 				
 				}
@@ -171,6 +175,7 @@ $(function(){
 	  var $newRowForm = $('#newRowForm');
 	  var $textInput = $('#newInputs');
 	  var inputs = '';
+	  var myModal = new bootstrap.Modal(document.getElementById('modals'));
 	  
 	  //the new course button is shown instead of the input form
 	  $newRowButton.show();
@@ -178,19 +183,17 @@ $(function(){
 	  
 	  $('#showForm').on('click', function(){
 		  $('#newInputs').empty();
-		  $newRowForm.toggle('fast');  //allows the input to be toggled on or off
 		  var i;
 		  for (i = 0; i < titles.length; i++){ //creates all inputs using a loop
 		  inputs += titles[i]+'<input class="new" type="text" name="'+titles[i]+'"'+'placeholder="'+titles[i]+'"> <br> ' 
 		  }
-		 
 		 $("#newInputs").append(inputs);
 		 
 		 inputs = '' //resets inputs
-	
+	     myModal.toggle();
 	  });
+
 	
-	  
 	  
 	  //course input form
 	  $newRowForm.on('submit', function(e) {
@@ -201,8 +204,8 @@ $(function(){
 		  
 		  //used to get values 
 		  var addData = {}; 
-		  $(".new").each(function() {
-	      addData[$(this).attr("name")] = $(this).val(); //finds and gets input values into a object
+		  $(".new").each(function() { //for each input which contain .new
+	      addData[$(this).attr("name")] = $(this).val(); // gets column name and also initialise it with the input value into a object
 		  });
 		  console.log(addData)
 		  var jsonAddData = JSON.stringify(addData); //converts object to a string
@@ -219,10 +222,15 @@ $(function(){
 			 console.log(data); 
 			 });
 		  }
+		  $textInput.val('');  //deletes any existing values in textbox after execute
+		 
 		
-		  $newRowForm.hide(); //hides the ability to add a new row
-		  $textInput.val(''); 
+		  
 	  });
+	   $('#addButton').on('click', function(){
+		     myModal.hide()
+	   });
+
   });
 
 	function getSets(dataSources){ //is called when the user chooses a data source
