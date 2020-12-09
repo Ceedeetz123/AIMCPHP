@@ -72,7 +72,7 @@ $(function(){
 		 if ($("#dataSource option:selected").val()=='database'){//database datasets
 		  $.getJSON("database1.php", {tableName:getDataSet}, function(data){
 		   if (data["code"] == "error"){
-			console.log(data["message"]);
+				console.log(data["message"]);
 			}
 			else{
 			$.each(data, function(index, element) {
@@ -82,8 +82,10 @@ $(function(){
 			
 			 for (s = 0; s < titles.length; s++) { //fills the column data selection and tabl
 				$("#columnSet").append('<option value="' + s + '">' + titles[s] + '</option>'); //adds a new select option 
-				$("tr#headerRow").append('<th id="columnName'+ s +'">'+ titles[s] + '</th>'); //sets the column of the first row of the table
+				$("tr#colHeaders").append('<th id="columnName'+ s +'">'+ titles[s] + '</th>'); //sets the column of the first row of the table
+				
 			 }
+
 
 			   	for (i = 0; i < element.length; i++){ 
 				
@@ -109,6 +111,7 @@ $(function(){
 			
 				
 				}
+				
 			}); //end else
 		  }; //end getJSON
 
@@ -234,31 +237,31 @@ $(function(){
   });
 
 	function getSets(dataSources){ //is called when the user chooses a data source
-	$.ajaxSetup({ //sets getJSON function to be sync
-		async: false
-	});
-		var database = {};
-		if (dataSources === 'database'){ //if user chooses a database datasource
+		$.ajaxSetup({ //sets getJSON function to be sync
+			async: false
+		});
 	
+		if (dataSources === 'database'){ //if user chooses a database datasource
+		var database = {};
 		$.getJSON("database.php", function(data){ //calls a php file to get the data set values
 				if (data["code"] == "error"){ 
 				  console.log(data["message"]); //when a error is detected the message will be displayed in the console
 				  
 				}
 				else{
-			
+					
+				console.log(data)
 				database = Object.assign({},(data)); //stores all data set values 
 	
 				console.log(database); //return back
 				} //end else
 			 //}
-			}); //end getJSON
+			});
 		
 		return database;
 		
 		} else if (dataSources === 'xml'){ //if user chooses a database datasource
 		var xml = {};
-		var xmls;
 		
 		$.getJSON("xml.php", function(data){ //calls a php file to get the data set values
 			if (data["code"] == "error"){

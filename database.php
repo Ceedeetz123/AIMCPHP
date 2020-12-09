@@ -7,7 +7,7 @@ if(!isset($error)){
 include "dbinfo.inc.php"; //Data Connection file called
 
 try {
-  $pdo = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $username, $password, [PDO:: ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_EMULATE_PREPARES => false]); //Data Strings
+  $pdo = new PDO("mysql:host=$servername;dbname=$database;charset=utf8", $username, $password, [PDO:: ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_EMULATE_PREPARES => false]); //Data Strings
 } catch (PDOexception $e) { //if there is no/invalid data string
   $error->code = "error"; 
   $error->message = $e->getMessage(); 

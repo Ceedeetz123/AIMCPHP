@@ -7,7 +7,7 @@ include "dbinfo.inc.php";
 
 try {
 	///$dbh = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $username, $password);
-	$pdo = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $username, $password, [PDO:: ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_EMULATE_PREPARES => false]);
+	$pdo = new PDO("mysql:host=$servername;dbname=$database;charset=utf8", $username, $password, [PDO:: ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_EMULATE_PREPARES => false]);
 
 	// check database connection
 } catch (PDOException $e) {
